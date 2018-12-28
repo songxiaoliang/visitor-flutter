@@ -15,7 +15,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  dio: ^1.0.13
+  fluro: ^1.4.0
+  scoped_model: ^1.0.1
+  event_bus: ^1.0.1
+  shimmer: ^0.0.6
+  connectivity: ^0.3.2
+  shared_preferences: ^0.4.3
+  cached_network_image: ^0.5.1
+  flutter_swiper: ^1.1.4
+  flutter_spinkit: ^3.0.0
+  webview_flutter: ^0.1.2
+  flutter_staggered_grid_view: ^0.2.5
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
