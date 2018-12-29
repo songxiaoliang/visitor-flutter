@@ -3,7 +3,7 @@ import 'package:event_bus/event_bus.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './config/application.dart';
-import './pages/home_page.dart';
+import './pages/app/home_page.dart';
 import './constants/theme.dart';
 import './models/state_model/main_model.dart';
 

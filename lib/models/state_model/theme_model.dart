@@ -1,6 +1,6 @@
 
 /**
- * 主题 Scoped Model
+ * 主题Model
  * Create by Songlcy
  */
 import './base_model.dart';
