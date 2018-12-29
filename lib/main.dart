@@ -47,6 +47,7 @@ class _AppState extends State<App> {
       child: ScopedModelDescendant<MainStateModel>(
         builder: (context, child, model) {
           return  MaterialApp(
+            debugShowCheckedModeBanner: false, // 去除 DEBUG 标签
             theme: ThemeData(
               primaryColor: ThemeList[model.themeIndex != null ? model.themeIndex : widget.themeIndex]
             ),
