@@ -3,15 +3,14 @@ import 'package:event_bus/event_bus.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './config/application.dart';
-import './pages/app/home_page.dart';
+import './pages/home/home_page.dart';
 import './constants/theme.dart';
-import './models/state_model/main_model.dart';
+import './models/state_model/main_state_model.dart';
 
 void main() async {
   int themeIndex = await getTheme();
   runApp(App(themeIndex));
 }
-
 
 Future<int> getTheme() async {
   SharedPreferences sp = await SharedPreferences.getInstance();
@@ -34,16 +33,19 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
 
+  MainStateModel mainStateModel;
+
   @override
   void initState() {
     super.initState();
-    Application.eventBus = new EventBus();
+    mainStateModel = MainStateModel();
+    Application.eventBus = EventBus();
   }
 
   @override
   Widget build(BuildContext context) {
     return ScopedModel<MainStateModel>(
-      model: MainStateModel(),
+      model: mainStateModel,
       child: ScopedModelDescendant<MainStateModel>(
         builder: (context, child, model) {
           return  MaterialApp(

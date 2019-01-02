@@ -1,10 +1,9 @@
 /**
  * 首页Tab切换Model
  */
+import './base_state_model.dart';
 
-import './base_model.dart';
-
-class TabBarChangeModel extends BaseStateModel {
+class TabBarStateModel extends BaseStateModel {
 
   int _tabBarCurrentIndex = 0;
 

@@ -4,7 +4,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../models/state_model/main_model.dart';
+import '../models/state_model/tab_state_model.dart';
 
 class TabBarComponent extends StatefulWidget {
 
@@ -22,7 +22,7 @@ class _TabBarComponentState extends State<TabBarComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<MainStateModel>(
+    return ScopedModelDescendant<TabBarStateModel>(
       builder: (context, child, model) {
         return Expanded(
           child: Column(

@@ -1,12 +1,12 @@
 name: openeye_flutter
 description: A new Flutter project.
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# Read more about versioning at semver.org.
+# 以下定义应用程序的版本和内部版本号。
+# 版本号是由点分隔的三个数字，如1.2.43
+# 后跟一个用+分隔的可选内部版本号。
+# 可以在flutter中覆盖版本号和构建器号
+# build通过分别指定--build-name和--build-number。
+# 在semver.org上阅读有关版本控制的更多信息。
 version: 1.0.0+1
 
 environment:
@@ -27,8 +27,8 @@ dependencies:
   flutter_spinkit: ^3.0.0
   webview_flutter: ^0.1.2
   flutter_staggered_grid_view: ^0.2.5
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+
+  # 以下将Cupertino Icons字体添加到您的应用程序中。与CupertinoIcons类一起使用，用于iOS样式图标。
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
@@ -42,34 +42,30 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
    - assets/images/icon_home_tab.png
    - assets/images/icon_home_tab_pressed.png
-   - assets/images/icon_feature_tab.png
-   - assets/images/icon_feature_tab_pressed.png
    - assets/images/icon_popular_tab.png
    - assets/images/icon_popular_tab_pressed.png
    - assets/images/icon_movie_tab.png
    - assets/images/icon_movie_tab_pressed.png
    - assets/images/icon_mine_tab.png
    - assets/images/icon_mine_tab_pressed.png
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.io/assets-and-images/#resolution-aware.
+   - assets/images/icon_empty.webp
+   - assets/images/icon_load_error.png
+   - assets/images/icon_placeholder.png
+   
+  # 图像资源可以引用一个或多个特定于分辨率的“变体”，请参阅 https://flutter.io/assets-and-images/#resolution-aware。
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.io/assets-and-images/#from-packages
+  # 有关从包依赖项添加资产的详细信息，请参阅 https://flutter.io/assets-and-images/#from-packages
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+  # 要在应用程序中添加自定义字体，请在此处添加字体部分，
+  # 在这个“flutter”部分。 此列表中的每个条目都应该有一个
+  # “family”键带有字体系列名称，而“fonts”键带有
+  # list给出字体的资产和其他描述符。 对于
+  # example：
   # fonts:
   #   - family: Schyler
   #     fonts:
@@ -82,5 +78,4 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.io/custom-fonts/#from-packages
+  # 有关包依赖关系中字体的详细信息，参见https://flutter.io/custom-fonts/#from-packages

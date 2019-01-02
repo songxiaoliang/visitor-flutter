@@ -3,9 +3,8 @@
  * 主题Model
  * Create by Songlcy
  */
-import './base_model.dart';
-
-abstract class ThemeStateModel extends BaseStateModel {
+import 'package:scoped_model/scoped_model.dart';
+abstract class ThemeStateModel extends Model {
 
   int _themeIndex;
 

@@ -4,9 +4,9 @@
  */
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../../models/state_model/main_model.dart';
 import './tab_pages.dart';
 import '../../constants/constant.dart';
+import '../../models/state_model/tab_state_model.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -15,28 +15,49 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeSceneState extends State<HomePage> {
+  
+  static int lastExitTime = 0;
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<MainStateModel>(
-      builder: (context, child, model) {
-        return Scaffold(
-          body: _renderTabContent(model),
-          bottomNavigationBar: _renderBottomNavigationBar(model),
-        );
-      },
+    return ScopedModel<TabBarStateModel>(
+      model: TabBarStateModel(),
+      child: WillPopScope(
+        onWillPop: _onBackPressed,
+        child:  ScopedModelDescendant<TabBarStateModel>(
+          builder: (context, child, model) {
+            return Scaffold(
+              body: _renderTabContent(model),
+              bottomNavigationBar: _renderBottomNavigationBar(model),
+            );
+          },
+        ),
+      ),
     );
   }
 
   /**
-   * Tab 内容
+   * 自定义返回键事件
+   * 一定时间内点击两次退出，反之提示
    */
-  _renderTabContent(MainStateModel model) {
+  Future<bool> _onBackPressed() async {
+    int nowExitTime = DateTime.now().millisecondsSinceEpoch;
+    if(nowExitTime - lastExitTime > 2000) {
+      lastExitTime = nowExitTime;
+      //  Toasty.info("再按一次退出程序");
+      return await Future.value(false);
+    }
+    return await Future.value(true);
+  }
+
+  /**
+   * Tab对应视图
+   */
+  _renderTabContent(TabBarStateModel model) {
     return IndexedStack(
       index: model.tabBarCurrentIndex,
       children: <Widget>[
         IndexPage(),
-        FeaturePage(),
         PopularPage(),
         MoviePage(),
         MinePage()
@@ -47,26 +68,30 @@ class _HomeSceneState extends State<HomePage> {
   /**
    * TabBar
    */
-  _renderBottomNavigationBar(MainStateModel model) {
+  _renderBottomNavigationBar(TabBarStateModel model) {
     return BottomNavigationBar(
       items: _renderTabBarItem(model.tabBarCurrentIndex),
       onTap: (index) => model.changeTabBarCurrentIndex(index),
       currentIndex: model.tabBarCurrentIndex,
       type: BottomNavigationBarType.fixed, 
-      fixedColor: Colors.white,
     );
   }
 
+  /**
+   * TabBarItem
+   */
   List<BottomNavigationBarItem> _renderTabBarItem(int currentIndex) {
     return [
       BottomNavigationBarItem(icon: _getTabBarItemIcon(0, currentIndex),title: _getTabBarItemText(0, currentIndex)),
       BottomNavigationBarItem(icon: _getTabBarItemIcon(1, currentIndex),title: _getTabBarItemText(1, currentIndex)),
       BottomNavigationBarItem(icon: _getTabBarItemIcon(2, currentIndex),title: _getTabBarItemText(2, currentIndex)),
       BottomNavigationBarItem(icon: _getTabBarItemIcon(3, currentIndex),title: _getTabBarItemText(3, currentIndex)),
-      BottomNavigationBarItem(icon: _getTabBarItemIcon(4, currentIndex),title: _getTabBarItemText(4, currentIndex)),
     ];
   }
 
+  /**
+   * TabBar图标
+   */
   _getTabBarIcon(String path) {
     return Image.asset(path, width: 25.0, height: 25.0);
   }
