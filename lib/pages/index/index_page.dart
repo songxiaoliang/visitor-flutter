@@ -103,7 +103,7 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
               isScrollable: true,
               labelColor: Color.fromARGB(255, 51, 51, 51),
               unselectedLabelColor: Color.fromARGB(255,192, 193, 195),
-              indicator: TabBarIndictorComponent(),
+              indicator: TabBarIndictorComponent(context: context),
               controller: _tabController,
             ),
           ),
@@ -119,7 +119,7 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
     return Expanded(
       child: TabBarView(
         controller: _tabController,
-        children: model.tabList.map<Widget>((tab) => IndexTabPage(categoryId: tab.id, stateModel: model)).toList()
+        children: model.tabList.map<Widget>((tab) => IndexTabPage(name: tab.name ,categoryId: tab.id, stateModel: model)).toList()
       ),
     );
   }

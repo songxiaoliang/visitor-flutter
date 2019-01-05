@@ -7,24 +7,24 @@ import 'package:scoped_model/scoped_model.dart';
 import './tab_pages.dart';
 import '../../constants/constant.dart';
 import '../../models/state_model/tab_state_model.dart';
-
 class HomePage extends StatefulWidget {
-
   @override
-  _HomeSceneState createState() => _HomeSceneState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeSceneState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage>{
   
   static int lastExitTime = 0;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    print("home_page_build");
     return ScopedModel<TabBarStateModel>(
       model: TabBarStateModel(),
-      child: WillPopScope(
-        onWillPop: _onBackPressed,
-        child:  ScopedModelDescendant<TabBarStateModel>(
+      child:ScopedModelDescendant<TabBarStateModel>(
           builder: (context, child, model) {
             return Scaffold(
               body: _renderTabContent(model),
@@ -32,7 +32,6 @@ class _HomeSceneState extends State<HomePage> {
             );
           },
         ),
-      ),
     );
   }
 

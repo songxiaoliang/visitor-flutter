@@ -25,8 +25,8 @@ dependencies:
   cached_network_image: ^0.5.1
   flutter_swiper: ^1.1.4
   flutter_spinkit: ^3.0.0
-  webview_flutter: ^0.1.2
-  flutter_staggered_grid_view: ^0.2.5
+  flutter_staggered_grid_view: ^0.2.5 
+  flutter_webview_plugin: ^0.3.0+2
 
   # 以下将Cupertino Icons字体添加到您的应用程序中。与CupertinoIcons类一起使用，用于iOS样式图标。
   cupertino_icons: ^0.1.2
@@ -56,6 +56,7 @@ flutter:
    - assets/images/icon_empty.webp
    - assets/images/icon_load_error.png
    - assets/images/icon_placeholder.png
+   - assets/images/icon_default_avatar.png
    
   # 图像资源可以引用一个或多个特定于分辨率的“变体”，请参阅 https://flutter.io/assets-and-images/#resolution-aware。
 

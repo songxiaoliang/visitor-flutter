@@ -23,6 +23,8 @@ class HomeStateModel extends BaseStateModel {
   IndexTabPageModel _indexTabPageModel;
   IndexTabPageModel get indexTabPageModel => _indexTabPageModel;
 
+  Map<String, List<Hot>> hotMap = Map();
+
   /**
    * 加载首页Tab分类列表
    */
@@ -63,6 +65,7 @@ class HomeStateModel extends BaseStateModel {
    * 加载首页对应Tab分类
    */
   fetchIndexVideoList(String categoryId) {
+    print(categoryId);
     _status = Status.LOADING;
     Map<String, String> params = { "id": categoryId };
     HttpUtil.get(INDEX_VIDEO_LIST, params)
@@ -72,7 +75,7 @@ class HomeStateModel extends BaseStateModel {
         var responseData = res.data;
         if(responseData != null) {
           _indexTabPageModel = IndexTabPageModel.fromJson(responseData);
-          print(responseData);
+          hotMap.addAll({ categoryId: _indexTabPageModel.payload.hots });
         } else {
           _status = Status.NO_RESULT;
         }
@@ -84,7 +87,9 @@ class HomeStateModel extends BaseStateModel {
       _status = Status.ERROR;
       print(onError.toString());
     })
-    .whenComplete(this.notifyListeners);
+    .whenComplete(() {
+      this.notifyListeners();
+    });
   }
 
   static HomeStateModel of(context) => 

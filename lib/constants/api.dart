@@ -16,3 +16,7 @@ const String VIDEO_LIST_URL = "https://dd.shmy.tech/api/client/classification/";
 // 视频详情
 const String VIDEO_URL = "https://dd.shmy.tech/api/client/video/";
 
+const String WEBSITE_URL = "https://blog.csdn.net/u013718120";
+
+const String GITHUB_URL = "https://github.com/songxiaoliang";
+

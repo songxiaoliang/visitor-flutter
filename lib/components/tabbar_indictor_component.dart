@@ -7,22 +7,29 @@ import 'package:flutter/widgets.dart';
 
 class TabBarIndictorComponent extends Decoration {
 
+  BuildContext context;
+
+  TabBarIndictorComponent({ @required this.context });
+
   @override
-  BoxPainter createBoxPainter([onChanged]) => _TabBarIndictorBoxPainter();
+  BoxPainter createBoxPainter([onChanged]) => _TabBarIndictorBoxPainter(context);
 }
 
 class _TabBarIndictorBoxPainter extends BoxPainter {
   
+  BuildContext context;
+  _TabBarIndictorBoxPainter(this.context);
+
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     final Paint paint = Paint();
-    paint.color = Color.fromARGB(255, 51, 51, 51);
+    paint.color = Theme.of(context).primaryColor;
     paint.style = PaintingStyle.fill;
-    final width = 30.0;
+    final width = 33.0;
     final height = 2.0;
     canvas.drawRect(
       Rect.fromLTWH(offset.dx - width / 2 + configuration.size.width / 2,
-        configuration.size.height - height, width, height), 
+        configuration.size.height - height - 5.0, width, height), 
       paint
     );
   }
