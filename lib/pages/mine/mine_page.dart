@@ -19,7 +19,8 @@ class _MinePageState extends State<MinePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        title: Text("我的"),
+        centerTitle: true,
+        title: Text("Mine", style: TextStyle(fontFamily: "Lobster")),
       ),
       body: ListView(
         children: <Widget>[

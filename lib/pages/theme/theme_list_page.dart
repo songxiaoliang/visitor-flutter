@@ -26,6 +26,7 @@ class _ThemeListPageState extends State<ThemeListPage> {
     _getDefaultTheme(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("更换主题"),
       ),
       body: _ThemeListBodyComponent(),

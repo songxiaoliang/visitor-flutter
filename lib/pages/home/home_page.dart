@@ -15,15 +15,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage>{
   
   static int lastExitTime = 0;
-
+  TabBarStateModel tabBarStateModel;
+  
   @override
   bool get wantKeepAlive => true;
 
   @override
+  void initState() {
+    super.initState();
+    tabBarStateModel = TabBarStateModel();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    print("home_page_build");
     return ScopedModel<TabBarStateModel>(
-      model: TabBarStateModel(),
+      model: tabBarStateModel,
       child:ScopedModelDescendant<TabBarStateModel>(
           builder: (context, child, model) {
             return Scaffold(
@@ -91,8 +97,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
   /**
    * TabBar图标
    */
-  _getTabBarIcon(String path) {
-    return Image.asset(path, width: 25.0, height: 25.0);
+  _getTabBarIcon(String path, Color color) {
+    return Image.asset(path, width: 25.0, height: 25.0, color: color);
   }
 
   /**
@@ -100,16 +106,22 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
    */
   Image _getTabBarItemIcon(index, currentIndex) {
     if(currentIndex == index) {
-      return _getTabBarIcon(tabIcon[index][1]);
+      return _getTabBarIcon(tabIcon[index][1], Theme.of(context).primaryColor);
     }
-    return _getTabBarIcon(tabIcon[index][0]);
+    return _getTabBarIcon(tabIcon[index][0], null);
   }
 
   /**
    * TabBar文字
    */
   Text _getTabBarItemText(index, currentIndex) {
-    return Text(tabTitle[index], style: TextStyle(color: index == currentIndex ? Color.fromARGB(255, 51, 51, 51) : Color.fromARGB(255,192, 193, 195)));
+    return Text(tabTitle[index], style: TextStyle(color: index == currentIndex ? Theme.of(context).primaryColor : Color.fromARGB(255,192, 193, 195)));
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 }
 

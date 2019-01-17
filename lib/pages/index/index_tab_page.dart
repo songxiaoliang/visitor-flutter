@@ -5,10 +5,9 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../models/state_model/home_state_model.dart';
-import '../../components/empty_component.dart';
 import '../../components/data_empty_component.dart';
 import '../../components/loading_component.dart';
-import '../../models/common/status_enum.dart';
+import '../../common/status.dart';
 import '../../models/pood/index_tab_page_model.dart';
 
 class IndexTabPage extends StatefulWidget {

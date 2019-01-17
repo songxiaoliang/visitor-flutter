@@ -8,6 +8,7 @@ enum Status {
   SUCCESS, // 请求成功
   NO_RESULT, // 请求结果为空
   ERROR, // 请求失败
+  NO_MORE, // 没有更多
 }
 
 class Response {

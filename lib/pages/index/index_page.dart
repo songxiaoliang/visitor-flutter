@@ -7,7 +7,7 @@ import 'package:scoped_model/scoped_model.dart';
 import '../../models/state_model/home_state_model.dart';
 
 import '../index/index_tab_page.dart';
-import '../../models/common/status_enum.dart';
+import '../../common/status.dart';
 import '../../components/loading_component.dart';
 import '../../components/data_empty_component.dart';
 import '../../components/tabbar_indictor_component.dart';
@@ -42,6 +42,7 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
   void _initTabBarController() async {
     await homeStateModel.fetchTabList();
     _tabController = new TabController(vsync: this, length: homeStateModel.tabList.length);
+  _tabController.animateTo(1);
   }
 
   @override
@@ -50,7 +51,11 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
       model: homeStateModel,
       child: ScopedModelDescendant<HomeStateModel>(
         builder: (context, child, model) {
-            return Scaffold(
+          return Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text("Vistor", style: TextStyle(fontFamily: 'Lobster')),
+            ),
             body: _renderBody(model),
           );
         },
@@ -76,7 +81,6 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
    */
   _renderTabView(HomeStateModel model) {
     return Container(
-      margin: EdgeInsets.only(top: 10.0),
       width: double.infinity,
       child: Column(
         children: <Widget>[

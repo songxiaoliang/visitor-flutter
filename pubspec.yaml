@@ -25,7 +25,7 @@ dependencies:
   cached_network_image: ^0.5.1
   flutter_swiper: ^1.1.4
   flutter_spinkit: ^3.0.0
-  flutter_staggered_grid_view: ^0.2.5 
+  flutter_staggered_grid_view: ^0.2.6 
   flutter_webview_plugin: ^0.3.0+2
 
   # 以下将Cupertino Icons字体添加到您的应用程序中。与CupertinoIcons类一起使用，用于iOS样式图标。
@@ -67,16 +67,14 @@ flutter:
   # “family”键带有字体系列名称，而“fonts”键带有
   # list给出字体的资产和其他描述符。 对于
   # example：
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Lobster
+      fonts:
+        - asset: assets/fonts/Lobster-1.4.otf
+        # style: italic
+    - family: FZLanTing
+      fonts:
+        - asset: assets/fonts/FZLanTingHeiS-DB1-GB-Regular.TTF
+        # weight: 700
   #
   # 有关包依赖关系中字体的详细信息，参见https://flutter.io/custom-fonts/#from-packages

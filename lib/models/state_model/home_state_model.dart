@@ -8,7 +8,7 @@ import 'package:scoped_model/scoped_model.dart';
 import './base_state_model.dart';
 import '../../constants/api.dart';
 import '../../utils/http_util.dart';
-import '../common/status_enum.dart';
+import '../../common/status.dart';
 import '../pood/Index_tab_model.dart';
 import '../pood/index_tab_page_model.dart';
 

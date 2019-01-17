@@ -21,6 +21,7 @@ var webviewRouteHandler = Handler(
     String url = params["url"]?.first;
     return WebviewScaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(title),
       ),
       url: url,

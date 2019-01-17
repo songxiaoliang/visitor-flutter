@@ -3,7 +3,7 @@
  * Create by Songlcy 
  */
 import 'package:flutter/material.dart';
-import '../models/common/status_enum.dart';
+import '../common/status.dart';
 
 class DataEmptyComponent extends StatelessWidget {
 
