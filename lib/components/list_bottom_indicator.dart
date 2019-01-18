@@ -3,7 +3,9 @@
  * Create by Songlcy
  */
 import 'package:flutter/material.dart';
+
 import '../common/status.dart';
+import './empty_component.dart';
 
  
 class ListBottomIndicator extends StatelessWidget {
@@ -43,6 +45,7 @@ class ListBottomIndicator extends StatelessWidget {
               style: TextStyle(color: Theme.of(context).primaryColor)),
         );
       default:
+        return EmptyComponent();
         break;
     }
   }

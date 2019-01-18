@@ -107,7 +107,7 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
               isScrollable: true,
               labelColor: Color.fromARGB(255, 51, 51, 51),
               unselectedLabelColor: Color.fromARGB(255,192, 193, 195),
-              indicator: TabBarIndictorComponent(context: context),
+              indicator: TabBarIndictorComponent(context: context,bgColor: Theme.of(context).primaryColor),
               controller: _tabController,
             ),
           ),

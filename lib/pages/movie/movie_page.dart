@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../common/status.dart';
+import '../../components/empty_component.dart';
+import '../../components/hero_image_component.dart';
 import '../../components/filter_bar_component.dart';
 import '../../components/list_bottom_indicator.dart';
 import '../../models/state_model/filter_state_model.dart';
@@ -61,23 +62,39 @@ class _MovieListComponent extends StatefulWidget {
 }
 
 class _MovieListComponentState extends State<_MovieListComponent> {
+  
+  Map<String, dynamic> _filterParams;
+  ScrollController _scrollController;
   final String MOVIE_ID = "5b1362ab30763a214430d036";
-
-  ScrollController _scrollController = ScrollController();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
-
-  Map<String, dynamic> _filterParams = <String, dynamic>{
-    "year": "",
-    "area": "",
-    "sort": "2",
-    "query": "2",
-    "source": "",
-  };
 
   @override
   void initState() {
     super.initState();
+    initData();
+    initListener();
+    widget._filterBarStateModel.fetchMovieList(MOVIE_ID, _filterParams);
+  }
+
+  /**
+   * 初始化数据
+   */
+  initData() {
+     _filterParams = <String, dynamic>{
+      "year": "",
+      "area": "",
+      "sort": "2",
+      "query": "2",
+      "source": "",
+    };
+  }
+
+  /**
+   * 设置事件监听
+   */
+  initListener() {
+    _scrollController = ScrollController();
     _scrollController.addListener(() {
       if (widget._filterBarStateModel.isOpen) {
         // 滑动状态中，关闭过滤菜单
@@ -89,7 +106,6 @@ class _MovieListComponentState extends State<_MovieListComponent> {
         _onListLoadMore();
       }
     });
-    widget._filterBarStateModel.fetchMovieList(MOVIE_ID, _filterParams);
   }
 
   /**
@@ -130,7 +146,9 @@ class _MovieListComponentState extends State<_MovieListComponent> {
           Expanded(
             child: ScopedModelDescendant<FilterStateModel>(
               builder: (context, child, model) {
-                return StaggeredGridView.countBuilder(
+                return model.movieList != null ?
+                StaggeredGridView.countBuilder(
+                  shrinkWrap: true,
                   controller: _scrollController,
                   crossAxisCount: 4,
                   itemCount: model.movieList.length + 1,
@@ -149,7 +167,8 @@ class _MovieListComponentState extends State<_MovieListComponent> {
                     top: 4.0,
                     bottom: 4.0,
                   ),
-                );
+                ):
+                EmptyComponent();
               }
             )
           )
@@ -168,11 +187,61 @@ class _MovieListComponentState extends State<_MovieListComponent> {
         onPressCallback: ()=> this.onPressCallback(model),
       );
     }
-    return Container(
-      width: 200,
-      height: 400,
-      child: Image.network(model.movieList[index]["thumbnail"],
-          width: 200.0, height: 400.0, fit: BoxFit.cover),
+    return Stack(
+      children: <Widget>[
+        // fill 默认都为 0
+        Positioned.fill(
+          child: HeroImageComponent(imageItem: model.movieList[index])
+        ),
+        // 集数
+        Positioned(
+          top: 0.0,
+          left: 0.0,
+          child: Container(
+            height: 20.0,
+            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            color: Color.fromRGBO(0, 0, 0, 0.5),
+            child: Center(
+              child: Text(
+                model.movieList[index]["latest"],
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10.0
+                ),
+              ),
+            ),
+          ),
+        ),
+        // 名称
+        Positioned(
+          left: 0.0,
+          right: 0.0,
+          bottom: 0.0,
+          child: Container(
+            height: 26.0,
+            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            color: Color.fromRGBO(0, 0, 0, 0.5),
+            child: Center(
+              child: Text(
+                model.movieList[index]["name"],
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13.0
+                ),
+              ),
+            )
+          ),
+        ),
+        Positioned.fill(
+          child: MaterialButton(
+            onPressed: () {
+              //  跳转视频详情
+            },  
+          )
+        )
+      ],
     );
   }
 

@@ -59,7 +59,7 @@ class _PopularPageState extends State<PopularPage> with SingleTickerProviderStat
       },
       body: TabBarView(
         controller: _tabController,
-        children: _tabBarList.map((item) => PopularTabPage(id: item["id"])).toList()
+        children:_tabBarList.map((item) => PopularTabPage(id: item["id"])).toList()
       ),
     );
   }

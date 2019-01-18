@@ -14,12 +14,12 @@ class PopularStateModel extends BaseStateModel {
 
   List _listData;
   Status status = Status.READY;
-  Map paging = { };
+  Map<String, int> paging = { "page": 1, "per_page": 20 };
 
   get listData => _listData;
 
   Future<bool> fetchListData(String id) async {
-    Map filterParams = { 
+    Map<String, dynamic> filterParams = { 
       "year": "2018",
       "area": "",
       "sort": "2",
@@ -83,7 +83,6 @@ class PopularStateModel extends BaseStateModel {
     if(status == Status.LOADING) {
       return null;
     }
-    int oldPage = paging["page"];
     paging["page"]++;
     if(!await fetchListData(id)) {
       paging["page"]--;

@@ -7,10 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 import '../pages/theme/theme_list_page.dart';
+import '../pages/detail/video_detail_page.dart';
 
 var themeListRouteHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     return ThemeListPage();
+  }
+);
+
+var videoDetailRouteHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    return VideoDetailPage();
   }
 );
 
