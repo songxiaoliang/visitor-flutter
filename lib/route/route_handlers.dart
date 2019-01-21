@@ -8,6 +8,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 import '../pages/theme/theme_list_page.dart';
 import '../pages/detail/video_detail_page.dart';
+import '../models/pood/video_model.dart';
 
 var themeListRouteHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -17,7 +18,18 @@ var themeListRouteHandler = Handler(
 
 var videoDetailRouteHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-    return VideoDetailPage();
+    String id = params["id"]?.first;
+    String timestamp = params["timestamp"]?.first;
+    String thumbnail = params["thumbnail"]?.first;
+    String name = params["name"]?.first;
+    return VideoDetailPage(
+      videoItem: VideoModel(
+        id: id,
+        name: name,
+        thumbnail: thumbnail,
+        timestamp: timestamp,
+      )
+    );
   }
 );
 

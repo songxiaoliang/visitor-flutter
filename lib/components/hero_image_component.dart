@@ -4,10 +4,11 @@
  */
 import 'package:flutter/material.dart';
 import './cached_image_component.dart';
+import '../models/pood/video_model.dart';
 
 class HeroImageComponent extends StatelessWidget {
 
-  final Map imageItem;
+  final VideoModel imageItem;
   final double imageWidth, imageHeight;
   
   const HeroImageComponent({
@@ -18,19 +19,19 @@ class HeroImageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String thumbnail = imageItem["thumbnail"];
+    String thumbnail = imageItem.thumbnail;
     if (thumbnail.startsWith("http://")) {
       thumbnail = thumbnail.replaceFirst("http://", "https://");
     }
-    if (imageItem["timestamp"] == null) {
-      imageItem["timestamp"] = "-default";
+    if (imageItem.timestamp == null) {
+      imageItem.timestamp = "-default";
     }
     return SizedBox(
       width: imageWidth,
       height: imageHeight,
       child: Hero(
-        key: Key(imageItem["_id"]),
-        tag: "${imageItem['_id']}${imageItem['timestamp']}",
+        key: Key(imageItem.id),
+        tag: "${imageItem.id}${imageItem.timestamp}",
         child: CachedImageComponent(imageUrl: thumbnail),
       ),
     );

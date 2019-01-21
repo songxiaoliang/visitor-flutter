@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../../route/routes.dart';
+import '../../config/application.dart';
 import '../../components/empty_component.dart';
 import '../../components/hero_image_component.dart';
 import '../../components/filter_bar_component.dart';
@@ -203,7 +205,7 @@ class _MovieListComponentState extends State<_MovieListComponent> {
             color: Color.fromRGBO(0, 0, 0, 0.5),
             child: Center(
               child: Text(
-                model.movieList[index]["latest"],
+                model.movieList[index].latest,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10.0
@@ -223,7 +225,7 @@ class _MovieListComponentState extends State<_MovieListComponent> {
             color: Color.fromRGBO(0, 0, 0, 0.5),
             child: Center(
               child: Text(
-                model.movieList[index]["name"],
+                model.movieList[index].name,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: TextStyle(
@@ -238,6 +240,10 @@ class _MovieListComponentState extends State<_MovieListComponent> {
           child: MaterialButton(
             onPressed: () {
               //  跳转视频详情
+               Application.navigateTo(
+                context: context, 
+                route: "${Routes.videoDetail}?name=${Uri.encodeComponent(model.movieList[index].name)}&thumbnail=${Uri.encodeComponent(model.movieList[index].thumbnail)}&timestamp=${model.movieList[index].timestamp}&id=${model.movieList[index].id}"
+              );
             },  
           )
         )

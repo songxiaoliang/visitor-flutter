@@ -3,6 +3,7 @@
  * Create by Songlcy
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../common/status.dart';
 import './empty_component.dart';
@@ -19,11 +20,31 @@ class ListBottomIndicator extends StatelessWidget {
     switch (status) {
       case Status.LOADING:
         // 加载中
-        return Center(
-          child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                  Theme.of(context).primaryColor)),
-        );
+        return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // CircularProgressIndicator(
+              //   strokeWidth: 2,
+              //   valueColor: AlwaysStoppedAnimation<Color>(
+              //       Theme.of(context).primaryColor)),
+               SpinKitFadingCircle(
+                size: 30.0,
+                itemBuilder: (_, int index) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: index.isEven ? Colors.red : Colors.green,
+                    ),
+                  );
+                },
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 15.0),
+                child: Text(
+                  "客官不要急, 正在路上...", 
+                  style: TextStyle(color: Color.fromARGB(255,192, 193, 195))),
+              )
+            ],
+          );
         break;
       case Status.ERROR:
         return Padding(

@@ -5,18 +5,19 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import '../pood/video_model.dart';
 import './base_state_model.dart';
-import '../../constants/api.dart';
+import '../../common/api.dart';
 import '../../common/status.dart';
 import '../../utils/http_util.dart';
 
 class PopularStateModel extends BaseStateModel {
 
-  List _listData;
+  List<VideoModel> _listData;
   Status status = Status.READY;
   Map<String, int> paging = { "page": 1, "per_page": 20 };
 
-  get listData => _listData;
+  List<VideoModel> get listData => _listData;
 
   Future<bool> fetchListData(String id) async {
     Map<String, dynamic> filterParams = { 
@@ -27,6 +28,7 @@ class PopularStateModel extends BaseStateModel {
       "source": "",
     };
     status = Status.LOADING;
+    this.notifyListeners();
     await HttpUtil.get(VIDEO_LIST_URL + id, <String, dynamic>{}..addAll(filterParams)..addAll(paging))
     .then((res) {
       if(res.statusCode == Response.OK) {
@@ -39,10 +41,19 @@ class PopularStateModel extends BaseStateModel {
           }
         } else {
           // 有数据
+          var responseList = res.data["payload"]["result"];
           if(paging["page"] == 1) {
-            _listData = res.data["payload"]["result"];
+            List<VideoModel> tempList = [];
+            for(int i = 0; i < responseList.length; i++) {
+              VideoModel videoModel = VideoModel.fromJson(responseList[i]);
+              tempList.add(videoModel);
+            }
+            _listData = tempList;
           } else {
-            _listData..addAll(res.data["payload"]["result"]);
+            for(int i = 0; i < responseList.length; i++) {
+              VideoModel videoModel = VideoModel.fromJson(responseList[i]);
+              _listData.add(videoModel);
+            }
           }
           status = Status.SUCCESS;
         }

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../../route/routes.dart';
+import '../../config/application.dart';
 import '../../components/empty_component.dart';
 import '../../components/hero_image_component.dart';
 import '../../components/list_bottom_indicator.dart';
@@ -21,12 +23,13 @@ class PopularTabPage extends StatefulWidget {
 }
 
 class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAliveClientMixin{
-
-  ScrollController _scrollController;
+  
+  PopularStateModel _popularStateModel; 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
     GlobalKey<RefreshIndicatorState>();
-  PopularStateModel _popularStateModel;
-
+  
+  // final NotificationListenerCallback<ScrollNotification> onScrollNotification;
+  
   @override
   bool get wantKeepAlive => true;
 
@@ -34,21 +37,11 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
   void initState() {
     super.initState();
     initData();
-    initListener();
     _popularStateModel.fetchListData(widget.id);
   }
 
   initData() {
     _popularStateModel = PopularStateModel();
-  }
-
-  initListener() {
-    _scrollController = ScrollController();
-    _scrollController.addListener((){
-      if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-        _onListLoadMore();
-      }
-    });
   }
 
   /**
@@ -76,37 +69,29 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
         child: ScopedModelDescendant<PopularStateModel>(
         builder: (context, child, model) {
           return model.listData != null ?
-          CustomScrollView(
-            shrinkWrap: true,
-            controller: _scrollController,
-            physics: BouncingScrollPhysics(),
-            slivers: <Widget>[
-            //   SliverGrid(
-            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //       crossAxisCount: 2,
-            //     ),
-            //     delegate: SliverChildBuilderDelegate(
-            //       (BuildContext context, int index) {
-            //         return _buildListItem(context, model, index);
-            //       },
-            //     childCount: model.listData.length + 1 
-            //   )
-            // )
-              SliverStaggeredGrid.countBuilder(
-                crossAxisCount: 4,
-                itemCount: model.listData.length + 1,
-                itemBuilder: (BuildContext context, int index) =>
-                  _buildListItem(context, model, index),
-                staggeredTileBuilder: (int index) {
-                  if (index == model.listData.length) {
-                    return StaggeredTile.count(4, 0.7);
-                  }
-                  return StaggeredTile.count(2, 2.6);
-                },
-                mainAxisSpacing: 4.0,
-                crossAxisSpacing: 4.0,
-              )
-            ],
+          NotificationListener(
+            onNotification: _handleScrollNotification,
+            child: CustomScrollView(
+              shrinkWrap: true,
+              // controller: _scrollController,
+              physics: BouncingScrollPhysics(),
+              slivers: <Widget>[
+                SliverStaggeredGrid.countBuilder(
+                  crossAxisCount: 4,
+                  itemCount: model.listData.length + 1,
+                  itemBuilder: (BuildContext context, int index) =>
+                      _buildListItem(context, model, index),
+                  staggeredTileBuilder: (int index) {
+                    if (index == model.listData.length) {
+                      return StaggeredTile.count(4, 0.7);
+                    }
+                    return StaggeredTile.count(2, 2.6);
+                  },
+                  mainAxisSpacing: 4.0,
+                  crossAxisSpacing: 4.0,
+                )
+              ],
+            ),
           )
           :
           EmptyComponent();
@@ -116,12 +101,24 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
     );
   }
 
+  bool _handleScrollNotification(ScrollNotification notification) {
+    // if (onScrollNotification != null) onScrollNotification(notification);
+
+    if (notification.depth != 0) return false;
+
+    // reach the pixels to loading more
+    if (notification.metrics.axisDirection == AxisDirection.down &&
+        notification.metrics.pixels == notification.metrics.maxScrollExtent) {
+        _onListLoadMore();
+    }
+    return false;
+  }
+
   /**
    * 列表项
    */
   _buildListItem(BuildContext context, PopularStateModel model, int index) {
     if (model.listData != null && index == model.listData.length) {
-      // 最后一项
       return ListBottomIndicator(
         status: model.status,
         onPressCallback: ()=> this.onPressCallback(model)
@@ -143,7 +140,7 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
             color: Color.fromRGBO(0, 0, 0, 0.5),
             child: Center(
               child: Text(
-                model.listData[index]["latest"],
+                model.listData[index].latest,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 10.0
@@ -163,7 +160,7 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
             color: Color.fromRGBO(0, 0, 0, 0.5),
             child: Center(
               child: Text(
-                model.listData[index]["name"],
+                model.listData[index].name,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: TextStyle(
@@ -178,6 +175,10 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
           child: MaterialButton(
             onPressed: () {
               //  跳转视频详情
+              Application.navigateTo(
+                context: context, 
+                route: "${Routes.videoDetail}?name=${Uri.encodeComponent(model.listData[index].name)}&thumbnail=${Uri.encodeComponent(model.listData[index].thumbnail)}&timestamp=${model.listData[index].timestamp}&id=${model.listData[index].id}"
+              );
             },  
           )
         )

@@ -2,22 +2,24 @@
  * 电影数据状态Model
  * Create by Songlcy
  */
+import '../../common/api.dart';
 import './base_state_model.dart';
-import '../../constants/api.dart';
-import '../../utils/http_util.dart';
+import '../pood/video_model.dart';
 import '../../common/status.dart';
+import '../../utils/http_util.dart';
 
 class MovieStateModel extends BaseStateModel{
 
-  List _movieList;
+  List<VideoModel> _movieList;
   Status status = Status.READY;
   Map<String, int> paging = { "page": 1, "per_page": 20 };
 
-  get movieList => _movieList;
+  List<VideoModel> get movieList => _movieList;
 
   Future<bool> fetchMovieList(String categoryId, Map<String, dynamic> filterParams) async {
     status = Status.LOADING;
-    HttpUtil.get(VIDEO_LIST_URL + categoryId, <String, dynamic>{}..addAll(paging)..addAll(filterParams))
+    this.notifyListeners();
+    await HttpUtil.get(VIDEO_LIST_URL + categoryId, <String, dynamic>{}..addAll(paging)..addAll(filterParams))
     .then((res) {
       if(res.statusCode == Response.OK) {
         if(res.data["payload"]["result"].length == 0) {
@@ -29,10 +31,19 @@ class MovieStateModel extends BaseStateModel{
           }
         } else {
           // 有数据
+          var responseList = res.data["payload"]["result"];
           if(paging["page"] == 1) {
-            _movieList = res.data["payload"]["result"];
+            List<VideoModel> tempList = [];
+            for(int i = 0; i < responseList.length; i++) {
+              VideoModel videoModel = VideoModel.fromJson(responseList[i]);
+              tempList.add(videoModel);
+            }
+            _movieList = tempList;
           } else {
-            _movieList..addAll(res.data["payload"]["result"]);
+            for(int i = 0; i < responseList.length; i++) {
+              VideoModel videoModel = VideoModel.fromJson(responseList[i]);
+              _movieList.add(videoModel);
+            }
           }
           status = Status.SUCCESS;
         }

@@ -24,6 +24,7 @@ class IndexTabPage extends StatefulWidget {
 
 class _IndexTabPageState extends State<IndexTabPage>
     with AutomaticKeepAliveClientMixin<IndexTabPage> {
+      
   @override
   void initState() {
     super.initState();

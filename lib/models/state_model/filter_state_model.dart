@@ -7,7 +7,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import './base_state_model.dart';
 import './movie_state_model.dart';
-import '../../constants/constant.dart';
+import '../../constants/filter_menu.dart';
 
 /**
  * item下标状态

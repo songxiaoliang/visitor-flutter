@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import './tab_pages.dart';
-import '../../constants/constant.dart';
+import '../../constants/index_tab.dart';
 import '../../models/state_model/tab_state_model.dart';
 class HomePage extends StatefulWidget {
   @override

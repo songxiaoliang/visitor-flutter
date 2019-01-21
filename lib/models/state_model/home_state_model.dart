@@ -6,7 +6,7 @@
 import 'package:scoped_model/scoped_model.dart';
 
 import './base_state_model.dart';
-import '../../constants/api.dart';
+import '../../common/api.dart';
 import '../../utils/http_util.dart';
 import '../../common/status.dart';
 import '../pood/Index_tab_model.dart';
@@ -65,7 +65,6 @@ class HomeStateModel extends BaseStateModel {
    * 加载首页对应Tab分类
    */
   fetchIndexVideoList(String categoryId) {
-    print(categoryId);
     _status = Status.LOADING;
     Map<String, String> params = { "id": categoryId };
     HttpUtil.get(INDEX_VIDEO_LIST, params)

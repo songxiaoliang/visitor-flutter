@@ -35,6 +35,7 @@ class _PopularPageState extends State<PopularPage> with SingleTickerProviderStat
           SliverAppBar(
             floating: true,
             pinned: true,
+            // snap: true,
             centerTitle: true,
             title: Text("Popular", style: TextStyle(fontFamily: "Lobster")),
             backgroundColor: Theme.of(context).primaryColor,

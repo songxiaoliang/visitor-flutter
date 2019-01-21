@@ -6,7 +6,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import '../../config/application.dart';
 import '../../route/routes.dart';
-import '../../constants/api.dart';
+import '../../common/api.dart';
 
 class MinePage extends StatefulWidget {
   @override
