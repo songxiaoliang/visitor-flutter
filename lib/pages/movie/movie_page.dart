@@ -8,6 +8,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../route/routes.dart';
 import '../../config/application.dart';
+import '../../models/pood/video_model.dart';
 import '../../components/empty_component.dart';
 import '../../components/hero_image_component.dart';
 import '../../components/filter_bar_component.dart';
@@ -240,9 +241,10 @@ class _MovieListComponentState extends State<_MovieListComponent> {
           child: MaterialButton(
             onPressed: () {
               //  跳转视频详情
-               Application.navigateTo(
+              VideoModel video = model.movieList[index];
+              Application.navigateTo(
                 context: context, 
-                route: "${Routes.videoDetail}?name=${Uri.encodeComponent(model.movieList[index].name)}&thumbnail=${Uri.encodeComponent(model.movieList[index].thumbnail)}&timestamp=${model.movieList[index].timestamp}&id=${model.movieList[index].id}"
+                route: "${Routes.videoDetail}?name=${Uri.encodeComponent(video.name)}&thumbnail=${Uri.encodeComponent(video.thumbnail)}&timestamp=${video.timestamp}&id=${video.id}&latest=${Uri.encodeComponent(video.latest)}&generatedAt=${video.generatedAt}"
               );
             },  
           )

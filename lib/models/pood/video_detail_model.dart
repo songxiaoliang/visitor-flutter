@@ -35,10 +35,12 @@ class VideoDetailModel {
   int favoritedCount;
   String introduce;
   String keyword;
+  String name;
   String region;
   List<RemoteUrl> remoteUrl;
   List<dynamic> starring;
   String releasedAt;
+  String thumbnail;
 
   VideoDetailModel({
     this.classify,
@@ -47,10 +49,12 @@ class VideoDetailModel {
     this.favoritedCount,
     this.introduce,
     this.keyword,
+    this.name,
     this.region,
     this.remoteUrl,
     this.starring,
-    this.releasedAt
+    this.releasedAt,
+    this.thumbnail
   });
 
   factory VideoDetailModel.fromJson(Map<String, dynamic> jsonObj) {
@@ -62,14 +66,15 @@ class VideoDetailModel {
       favoritedCount: jsonObj["favoritedCount"],
       introduce: jsonObj["introduce"],
       keyword: jsonObj["keyword"],
+      name: jsonObj["name"],
       region: jsonObj["region"],
       remoteUrl: (jsonObj["remote_url"] as List).map((item) => RemoteUrl.fromJson(item)).toList(),
       starring: jsonObj["starring"],
       releasedAt: jsonObj["released_at"],
+      thumbnail: jsonObj["thumbnail"]
     );
   }
 }
-
 class Classify {
 
   String id;

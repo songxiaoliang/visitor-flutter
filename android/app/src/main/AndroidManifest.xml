@@ -1,4 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.openeyeflutter">
 
     <!-- The INTERNET permission is required for development. Specifically,
@@ -14,6 +16,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
+        tools:replace="android:label"
         android:label="openeye_flutter"
         android:icon="@mipmap/ic_launcher">
         <activity

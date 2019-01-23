@@ -51,7 +51,11 @@ class VideoDescTabPage extends StatelessWidget {
             ), 
             VideoDetailItemComponent(
               icon: "assets/images/icon_videodetail_starring.png",
-              content: "明星主演: ${videoDetailModel.starring.getRange(0, videoDetailModel.starring.length)}"
+              content: "明星主演"
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(33.3, 8.0, 16.0, 0.0),
+              child: Text("${videoDetailModel.starring.getRange(0, videoDetailModel.starring.length)}"),
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 13.0),

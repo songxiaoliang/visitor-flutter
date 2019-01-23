@@ -28,8 +28,11 @@ dependencies:
   flutter_spinkit: ^3.0.0
   flutter_staggered_grid_view: ^0.2.6 
   flutter_webview_plugin: ^0.3.0+2
-
-  # 以下将Cupertino Icons字体添加到您的应用程序中。与CupertinoIcons类一起使用，用于iOS样式图标。
+  video_player:
+    git:
+      url: https://github.com/songxiaoliang/flutter_video_player.git
+  
+      # 以下将Cupertino Icons字体添加到您的应用程序中。与CupertinoIcons类一起使用，用于iOS样式图标。
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
