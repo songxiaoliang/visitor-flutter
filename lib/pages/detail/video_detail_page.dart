@@ -4,6 +4,7 @@
  */
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import './video_desc_tab_page.dart';
@@ -54,9 +55,16 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
                   expandedHeight:
                     DeviceUtil.getScreenSize(context).width * 1.05,
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text(
-                      "${widget.videoItem.name}",
-                      style: TextStyle(fontSize: 15.0)
+                      title: Shimmer.fromColors(
+                      baseColor: Colors.white,
+                      highlightColor: Theme.of(context).primaryColor,
+                      period: Duration(milliseconds: 6000),
+                      child: Text(
+                        "${widget.videoItem.name}",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                        ),
+                      ),
                     ),
                     centerTitle: true,
                     background: HeaderBackGroundCover(widget.videoItem),

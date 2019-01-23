@@ -13,13 +13,16 @@ class PopularPage extends StatefulWidget {
   _PopularPageState createState() => _PopularPageState();
 }
 
-class _PopularPageState extends State<PopularPage> with SingleTickerProviderStateMixin {
+class _PopularPageState extends State<PopularPage> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin<PopularPage> {
 
   TabController _tabController;
   final List _tabBarList = [ 
     {"id": "5b1fdbee30025ae5371ac363", "name": "动漫"}, 
     {"id": "5b1fd85730025ae5371abaed", "name": "综艺"}
   ];
+  
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

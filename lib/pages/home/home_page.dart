@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage>{
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage> {
   
   static int lastExitTime = 0;
   TabBarStateModel tabBarStateModel;

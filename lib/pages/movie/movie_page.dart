@@ -64,13 +64,16 @@ class _MovieListComponent extends StatefulWidget {
   State<StatefulWidget> createState() => _MovieListComponentState();
 }
 
-class _MovieListComponentState extends State<_MovieListComponent> {
+class _MovieListComponentState extends State<_MovieListComponent> with AutomaticKeepAliveClientMixin {
   
   Map<String, dynamic> _filterParams;
   ScrollController _scrollController;
   final String MOVIE_ID = "5b1362ab30763a214430d036";
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

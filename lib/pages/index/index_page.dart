@@ -18,7 +18,7 @@ class IndexPage extends StatefulWidget {
   _IndexPageState createState() => _IndexPageState();
 }
 
-class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMixin {
+class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
 
   List<Tab> _tabWidgetList = [];
   TabController _tabController;
@@ -31,6 +31,9 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
     }
     return homeStateModel;
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

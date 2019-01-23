@@ -8,11 +8,18 @@ import 'package:scoped_model/scoped_model.dart';
 import '../../common/status.dart';
 import '../../components/loading_component.dart';
 import '../../components/data_empty_component.dart';
+import '../../components/animation_text_component.dart';
 import '../../components/video_detail_item_component.dart';
 import '../../models/pood/video_detail_model.dart';
 import '../../models/state_model/video_detail_state_model.dart';
 
-class VideoPlotTabPage extends StatelessWidget {
+
+class VideoPlotTabPage extends StatefulWidget {
+  
+  @override
+  State<StatefulWidget> createState()=>_VideoPlotTabPageState();
+}
+class _VideoPlotTabPageState extends State<VideoPlotTabPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +38,12 @@ class VideoPlotTabPage extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.all(13.0),
-              child: Text(
-                "${videoDetailModel.introduce}", 
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  letterSpacing: 1.0
+              child: AnimationTextComponent(
+                delayTime: 500,
+                text: "${videoDetailModel.introduce}",
+                textStyle: TextStyle(
+                  color: Colors.black,
+                  // letterSpacing: 1.0
                 ),
               )
             )
