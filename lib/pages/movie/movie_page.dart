@@ -151,7 +151,7 @@ class _MovieListComponentState extends State<_MovieListComponent> {
               builder: (context, child, model) {
                 return model.movieList != null ?
                 StaggeredGridView.countBuilder(
-                  shrinkWrap: true,
+                  shrinkWrap: false,
                   controller: _scrollController,
                   crossAxisCount: 4,
                   itemCount: model.movieList.length + 1,

@@ -23,7 +23,7 @@ class PopularTabPage extends StatefulWidget {
   State<StatefulWidget> createState() => _PopularTabPageState();
 }
 
-class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAliveClientMixin{
+class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAliveClientMixin {
   
   PopularStateModel _popularStateModel; 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
@@ -73,7 +73,7 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
           NotificationListener(
             onNotification: _handleScrollNotification,
             child: CustomScrollView(
-              shrinkWrap: true,
+              shrinkWrap: false,
               // controller: _scrollController,
               physics: BouncingScrollPhysics(),
               slivers: <Widget>[

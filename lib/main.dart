@@ -59,6 +59,7 @@ class _AppState extends State<App> {
           return  MaterialApp(
             debugShowCheckedModeBanner: false, // 去除 DEBUG 标签
             theme: ThemeData(
+              platform: TargetPlatform.iOS,
               primaryColor: themeList[model.themeIndex != null ? model.themeIndex : widget.themeIndex]
             ),
             home: HomePage(),
