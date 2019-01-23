@@ -4,6 +4,8 @@
  */
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 import './tab_pages.dart';
 import '../../constants/index_tab.dart';
 import '../../models/state_model/tab_state_model.dart';
@@ -28,17 +30,23 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<TabBarStateModel>(
-      model: tabBarStateModel,
-      child:ScopedModelDescendant<TabBarStateModel>(
-          builder: (context, child, model) {
-            return Scaffold(
-              body: _renderTabContent(model),
-              bottomNavigationBar: _renderBottomNavigationBar(model),
-            );
-          },
-        ),
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: ScopedModel<TabBarStateModel>(
+        model: tabBarStateModel,
+        child:ScopedModelDescendant<TabBarStateModel>(
+            builder: (context, child, model) {
+              return Scaffold(
+                
+                body: _renderTabContent(model),
+                bottomNavigationBar: _renderBottomNavigationBar(model),
+              );
+            },
+          ),
+      ),
     );
+    
+    
   }
 
   /**
@@ -49,7 +57,15 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
     int nowExitTime = DateTime.now().millisecondsSinceEpoch;
     if(nowExitTime - lastExitTime > 2000) {
       lastExitTime = nowExitTime;
-      //  Toasty.info("再按一次退出程序");
+      Fluttertoast.instance.showToast(
+        msg: "再按一次退出程序",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Theme.of(context).primaryColor,
+        textColor: Colors.white,
+        fontSize: 16.0
+      );
       return await Future.value(false);
     }
     return await Future.value(true);

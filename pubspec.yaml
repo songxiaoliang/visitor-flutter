@@ -22,6 +22,7 @@ dependencies:
   event_bus: ^1.0.1
   shimmer: ^0.0.6
   connectivity: ^0.3.2
+  fluttertoast: ^2.2.7
   shared_preferences: ^0.4.3
   cached_network_image: ^0.5.1
   flutter_swiper: ^1.1.4
