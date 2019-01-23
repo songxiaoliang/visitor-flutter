@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import './route/routes.dart';
+import './constants/theme.dart';
+import './utils/time_util.dart';
 import './config/application.dart';
 import './pages/home/home_page.dart';
-import './constants/theme.dart';
 import './models/state_model/main_state_model.dart';
 
 void main() async {
@@ -45,6 +47,7 @@ class _AppState extends State<App> {
     final Router router = Router();
     Routes.configureRoutes(router);
     Application.router = router;
+    TimeUtil.initLocaleLanguage();
   }
 
   @override

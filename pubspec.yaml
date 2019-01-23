@@ -17,6 +17,7 @@ dependencies:
     sdk: flutter
   dio: ^1.0.13
   fluro: ^1.4.0
+  timeago: ^2.0.10
   scoped_model: ^1.0.1
   event_bus: ^1.0.1
   shimmer: ^0.0.6
@@ -57,6 +58,13 @@ flutter:
    - assets/images/icon_load_error.png
    - assets/images/icon_placeholder.png
    - assets/images/icon_default_avatar.png
+   - assets/images/icon_videodetail_num.png
+   - assets/images/icon_videodetail_jishu.png
+   - assets/images/icon_videodetail_name.png
+   - assets/images/icon_videodetail_playlist.png
+   - assets/images/icon_videodetail_director.png
+   - assets/images/icon_videodetail_starring.png
+   - assets/images/icon_videodetail_desc.png
    
   # 图像资源可以引用一个或多个特定于分辨率的“变体”，请参阅 https://flutter.io/assets-and-images/#resolution-aware。
 

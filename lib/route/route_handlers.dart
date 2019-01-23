@@ -22,10 +22,14 @@ var videoDetailRouteHandler = Handler(
     String timestamp = params["timestamp"]?.first;
     String thumbnail = params["thumbnail"]?.first;
     String name = params["name"]?.first;
+    String latest = params["latest"]?.first;
+    String generatedAt = params["generatedAt"]?.first;
     return VideoDetailPage(
       videoItem: VideoModel(
         id: id,
+        generatedAt: generatedAt,
         name: name,
+        latest: latest,
         thumbnail: thumbnail,
         timestamp: timestamp,
       )

@@ -8,6 +8,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../route/routes.dart';
 import '../../config/application.dart';
+import '../../models/pood/video_model.dart';
 import '../../components/empty_component.dart';
 import '../../components/hero_image_component.dart';
 import '../../components/list_bottom_indicator.dart';
@@ -175,9 +176,10 @@ class _PopularTabPageState extends State<PopularTabPage> with AutomaticKeepAlive
           child: MaterialButton(
             onPressed: () {
               //  跳转视频详情
+              VideoModel video = model.listData[index];
               Application.navigateTo(
                 context: context, 
-                route: "${Routes.videoDetail}?name=${Uri.encodeComponent(model.listData[index].name)}&thumbnail=${Uri.encodeComponent(model.listData[index].thumbnail)}&timestamp=${model.listData[index].timestamp}&id=${model.listData[index].id}"
+                route: "${Routes.videoDetail}?name=${Uri.encodeComponent(video.name)}&thumbnail=${Uri.encodeComponent(video.thumbnail)}&timestamp=${video.timestamp}&id=${video.id}&latest=${Uri.encodeComponent(video.latest)}&generatedAt=${video.generatedAt}"
               );
             },  
           )
