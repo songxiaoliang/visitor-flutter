@@ -2,12 +2,13 @@
 
 ### 前言
 
-
-可以扫码(使用浏览器扫码,不要使用qq或者微信)直接下载Release版本APK文件体验一下流畅度
-
+可直接扫码安装Apk体验
 <img src='https://www.pgyer.com/app/qrcode/poE0' />
 
-项目截图
+也可以通过以下链接下载Apk安装
+https://www.pgyer.com/poE0
+
+### 项目截图
   
   
   
