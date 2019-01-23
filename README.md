@@ -5,7 +5,7 @@
 
 可以扫码(使用浏览器扫码,不要使用qq或者微信)直接下载Release版本APK文件体验一下流畅度
 
-二维码
+<img src='https://www.pgyer.com/app/qrcode/poE0' />
 
 项目截图
   
