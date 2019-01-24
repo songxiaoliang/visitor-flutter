@@ -45,6 +45,7 @@ https://www.pgyer.com/poE0
   6. 使用 shared_preferences 实现小数据的本地化存储。
   7. 使用第三方字体库，实现 FontFamily 的定制显示。
   8. 设置 WillPopScope，实现首页点击返回键提示两次快按退出功能。
+  9. 首页非Index Tab 页面下，点击返回键，首先返回 Index Tab，再次点击提示两次退出。
   ....
 ```
 
