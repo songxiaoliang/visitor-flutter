@@ -2,15 +2,14 @@
 
 ### 前言
 
-可直接扫码安装Apk体验
+##### 扫码安装Apk体验
 <img src='https://www.pgyer.com/app/qrcode/poE0' />
 
-也可以通过以下链接下载Apk安装
+##### 链接下载Apk安装
 https://www.pgyer.com/poE0
 
-### 项目截图
-  
-  
+### 项目截图 （oneplus 5 Android 设备）
+
   
   
 知识点
