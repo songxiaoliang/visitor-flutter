@@ -69,7 +69,14 @@ https://www.pgyer.com/poE0
       url: https://github.com/songxiaoliang/flutter_video_player.git
 ```
 
-
+### 待完善功能
+```xml
+ 1. 登录
+ 2. 分享
+ 3. 支付
+ 4. 推送
+ 5. 局部窗口播放
+```
 
 ### 效果图 （oneplus 5 Android 设备）
 
@@ -78,18 +85,7 @@ https://www.pgyer.com/poE0
 <img width="300" height="500" src='https://img-blog.csdnimg.cn/20190124101200245.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
 <img width="300" height="500" src='https://img-blog.csdnimg.cn/20190124101258765.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
 <img width="300" height="500" src='https://img-blog.csdnimg.cn/20190124101518712.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
-<img width="300" height="500" src='https://img-blog.csdnimg.cn/201901241014493.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
-<img width="300" height="500" src='https://img-blog.csdnimg.cn/20190124101345380.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
+<img width="300" height="500" src='https://img-blog.csdnimg.cn/201901241014493.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/><img width="300" height="500" src='https://img-blog.csdnimg.cn/20190124101345380.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
 
-### 待解决的问题
-键盘遮挡
-下拉刷新，上拉加载更多的统一封装
-加载中、空数据、错误数据的界面的统一处理
-简单动画的使用(正在学习..)
-学习资料
-官方的 Flutter官方地址
-国内翻译版本 Flutter中文网
-阿里闲鱼技术微信公众号(搜索 '闲鱼技术')
-官方的Demo及各个Widget的效果在安装了Flutter SDK之后在 Flutter SDK安装目录/flutter/examples下，可以自己一一尝试。
 
 
