@@ -7,26 +7,22 @@
 
 ##### 链接下载Apk安装
 https://www.pgyer.com/poE0
-
-
-
-  
-  
+ 
 ### 模块
-开发环境：
+1.开发环境：
 ```xml
   Vs Code (1.30.2)
   Android Studio 3.+
 ```
 
-开发框架 ( Flutter sdk: ">=2.0.0-dev.68.0 <3.0.0" )：
+2.开发框架 ( Flutter sdk: ">=2.0.0-dev.68.0 <3.0.0" )：
 ```xml
   状态管理：Scoped_model
   网络层：Dio
   导航库：Fluro
 ```
 
-主模块分为首页、精选、电影、我的，以下是功能列表：
+3.主模块分为首页、精选、电影、我的，以下是功能列表：
 ```xml
   使用 scoped_model 状态管理，实现state统一管理。
   使用 TabBar + TabBarView 实现单页面不同模块切换。
@@ -78,6 +74,12 @@ https://www.pgyer.com/poE0
 ### 效果图 （oneplus 5 Android 设备）
 
 <img src='https://img-blog.csdnimg.cn/20190124101016565.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
+<img src='https://img-blog.csdnimg.cn/20190124101058299.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
+<img src='https://img-blog.csdnimg.cn/20190124101200245.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
+<img src='https://img-blog.csdnimg.cn/20190124101258765.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
+<img src='https://img-blog.csdnimg.cn/20190124101518712.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
+<img src='https://img-blog.csdnimg.cn/201901241014493.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
+<img src='https://img-blog.csdnimg.cn/20190124101345380.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM3MTgxMjA=,size_16,color_FFFFFF,t_70'/>
 
 ### 待解决的问题
 键盘遮挡
