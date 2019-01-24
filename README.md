@@ -48,7 +48,33 @@ https://www.pgyer.com/poE0
   ....
 ```
 
-### 项目依赖库
+### 项目结构
+```xml
+ lib
+ ├── main.dart
+ ├── common
+ ├── components
+ ├── cofig
+ ├── constants
+ ├── delegate
+ ├── events
+ ├── models
+ │   ├── pood
+ │   └── state_model
+ ├── pages
+ │   ├── detail
+ │   └── home
+ │   ├── index
+ │   └── mine
+ │   ├── movie
+ │   └── popular
+ │   ├── theme
+ ├── route
+ ├── utils
+ └assets
+```
+
+### 依赖库
 
 部分图标采用了icons，查看具体的图标名称可到 ionics官方文档。依赖方式，cd 到项目根目录，执行：flutter get packages 
 ```xml
