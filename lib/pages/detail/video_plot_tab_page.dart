@@ -15,7 +15,7 @@ import '../../models/state_model/video_detail_state_model.dart';
 
 
 class VideoPlotTabPage extends StatefulWidget {
-  
+
   @override
   State<StatefulWidget> createState()=>_VideoPlotTabPageState();
 }
@@ -38,12 +38,15 @@ class _VideoPlotTabPageState extends State<VideoPlotTabPage> {
             ),
             Container(
               margin: EdgeInsets.all(13.0),
-              child: AnimationTextComponent(
-                delayTime: 500,
-                text: "${videoDetailModel.introduce}",
-                textStyle: TextStyle(
-                  color: Colors.black,
-                  // letterSpacing: 1.0
+              child: Center(
+                child: AnimationTextComponent(
+                  delayTime: 1500,
+                  duration: 6000,
+                  text: "${videoDetailModel.introduce}",
+                  textStyle: TextStyle(
+                    color: Colors.black,
+                    // letterSpacing: 1.0
+                  ),
                 ),
               )
             )

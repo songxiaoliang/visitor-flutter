@@ -54,6 +54,10 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
    * 一定时间内点击两次退出，反之提示
    */
   Future<bool> _onBackPressed() async {
+    if(tabBarStateModel.tabBarCurrentIndex != 0) {
+      tabBarStateModel.changeTabBarCurrentIndex(0);
+      return await Future.value(false);
+    }
     int nowExitTime = DateTime.now().millisecondsSinceEpoch;
     if(nowExitTime - lastExitTime > 2000) {
       lastExitTime = nowExitTime;

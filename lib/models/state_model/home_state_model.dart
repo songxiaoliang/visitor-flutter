@@ -86,9 +86,7 @@ class HomeStateModel extends BaseStateModel {
       _status = Status.ERROR;
       print(onError.toString());
     })
-    .whenComplete(() {
-      this.notifyListeners();
-    });
+    .whenComplete(this.notifyListeners);
   }
 
   static HomeStateModel of(context) => 

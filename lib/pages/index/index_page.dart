@@ -20,9 +20,7 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
 
-  List<Tab> _tabWidgetList = [];
   TabController _tabController;
-
   HomeStateModel homeStateModel;
 
   _getIndexModel() {
@@ -45,7 +43,7 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
   void _initTabBarController() async {
     await homeStateModel.fetchTabList();
     _tabController = new TabController(vsync: this, length: homeStateModel.tabList.length);
-  _tabController.animateTo(1);
+    _tabController.animateTo(1);
   }
 
   @override
@@ -126,7 +124,11 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
     return Expanded(
       child: TabBarView(
         controller: _tabController,
-        children: model.tabList.map<Widget>((tab) => IndexTabPage(name: tab.name ,categoryId: tab.id, stateModel: model)).toList()
+        children: List.generate(model.tabList.length, (index) {
+          return IndexTabPage(index: index, name: model.tabList[index].name ,
+          categoryId: model.tabList[index].id, stateModel: model);
+        }).toList()
+        // model.tabList.map<Widget>((tab) => IndexTabPage(name: tab.name ,categoryId: tab.id, stateModel: model)).toList()
       ),
     );
   }
