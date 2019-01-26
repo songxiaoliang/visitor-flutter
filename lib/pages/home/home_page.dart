@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
     int nowExitTime = DateTime.now().millisecondsSinceEpoch;
     if(nowExitTime - lastExitTime > 2000) {
       lastExitTime = nowExitTime;
-      Fluttertoast.instance.showToast(
+      Fluttertoast.showToast(
         msg: "再按一次退出程序",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
