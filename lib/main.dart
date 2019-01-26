@@ -70,7 +70,7 @@ class _AppState extends State<App> {
         default:
           break;
       }
-      Fluttertoast.instance.showToast(
+      Fluttertoast.showToast(
         msg: networkResult,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.TOP,
