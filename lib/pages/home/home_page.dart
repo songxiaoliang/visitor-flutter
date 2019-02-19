@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
         child:ScopedModelDescendant<TabBarStateModel>(
             builder: (context, child, model) {
               return Scaffold(
-                
                 body: _renderTabContent(model),
                 bottomNavigationBar: _renderBottomNavigationBar(model),
               );
