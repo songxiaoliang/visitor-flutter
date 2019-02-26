@@ -1,6 +1,6 @@
 # Vistor-Flutter 视频类 App
 
-## 博客链接：https://blog.csdn.net/u013718120/article/details/86621278
+## 博客链接：https://songlcy.blog.csdn.net/article/details/86621278
 
 ### 前言
 
