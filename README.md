@@ -9,6 +9,14 @@
 
 ##### 链接下载Apk安装
 https://www.pgyer.com/poE0
+
+【注】如果安装apk后，启动发生闪退现象，原因是由于手机 ARM 处理器兼容问题。一般会发生在新款三星、华为等第8代处理器手机，此时可以找到 app/build.gradle 文件，手动修改如下代码：
+```xml
+ // "arm64-v8a"为8代处理器，一般为三星，华为新手机出现。
+ ndk {
+   abiFilters "armeabi-v7a", "armeabi", "arm64-v8a"
+ }
+```
  
 ### 模块
 1.开发环境：
