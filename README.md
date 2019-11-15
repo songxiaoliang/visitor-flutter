@@ -2,11 +2,6 @@
 
 ## 博客链接：https://songlcy.blog.csdn.net/article/details/86621278
 
-### 前言
-
-##### 扫码安装Apk体验
-<img src='https://www.pgyer.com/app/qrcode/poE0' />
-
 ##### 链接下载Apk安装
 https://www.pgyer.com/poE0
 
